@@ -1,0 +1,43 @@
+@import '../../base.scss';
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $background;
+  position: relative;
+  z-index: 300;
+  -webkit-line-clamp: 4;
+}
+
+select {
+  width: 60px;
+  height: 40px;
+  position: relative;
+}
+
+option {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: antiquewhite;
+  color: dodgerblue;
+}
+
+ul {
+  display: none;
+}
+
+.box {
+  width: 100px;
+  height: 50px;
+  border:  1px solid blue;
+
+  &:focus {
+    border: 1px solid red;
+  }
+
+  &:focus ~ ul {
+    display: block;
+  }
+}

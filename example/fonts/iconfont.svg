@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="danse_fanhui" unicode="&#58946;" d="M672.97-60.46l70.25 65.41L410.6 362.43l333.06 367.34-71.13 64.47-392.31-432.65 392.75-422.05z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="danse_xinzengkehu" unicode="&#58948;" d="M524.55 776.95L323.24 660.7v-232.47l133.51-77.09-295.6-111.47v-265.15h363.4v58.22H219.37V199.41L524.55 312l201.34 116.22V660.7z m143.13-315.11l-143.13-82.62-143.1 82.61V627.1l143.1 82.62 143.13-82.62zM746.05 331.54c-102.34 0-185.57-83.24-185.57-185.56s83.23-185.57 185.57-185.57S931.61 43.66 931.61 146s-83.23 185.54-185.56 185.54z m0-327.47c-78.26 0-141.91 63.66-141.91 141.91s63.65 141.9 141.91 141.9S888 224.22 888 146s-63.7-141.93-141.95-141.93zM767.88 167.81v81.58h-43.66v-81.58h-81.59v-43.66h81.59v-81.59h43.66v81.59h81.58v43.66h-81.58z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

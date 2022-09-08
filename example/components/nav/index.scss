@@ -1,0 +1,30 @@
+.nav-container {
+  padding: 10px;
+  text-align: center;
+  background-image: linear-gradient(to right, rgb(221, 255, 0), green, orange, yellow);
+  background-clip: text;
+  color: transparent;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      width: 25%;
+
+      &:nth-of-type(5) {
+        order: 8;
+      }
+      &:nth-of-type(6) {
+        order: 7;
+      }
+      &:nth-of-type(7) {
+        order: 6;
+      }
+      &:nth-of-type(8) {
+        order: 5;
+      }
+    }
+  }
+}
