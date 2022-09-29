@@ -1,15 +1,19 @@
-import React, { CSSProperties } from 'react';
-import './index.scss';
+import React, { lazy } from 'react';
+import { Button } from 'antd';
+const WrappedNormalLoginForm = lazy(() => import('./form'))
+const FormV4 = lazy(() => import('./form4'))
+import './index.less';
 
 export default function Footers () {
   const dpr = window.devicePixelRatio;
   const value = 1 / dpr;
-  const styleObj:CSSProperties = {
+  const styleObj = {
     color: 'blue',
   }
   return (
     <div>
       footer组件
+      <Button type="primary">这是按钮</Button>
       <div style={{ borderBottom: '1px solid red', margin: dpr < 2 ? 10 : 20, transform: `scaleY(${value})`, ...styleObj }} />
       {
         Array(dpr).fill(0).map((i, index) => (
@@ -61,6 +65,9 @@ export default function Footers () {
       <input id="1" />
       <input id="2" />
     </div>
+    <WrappedNormalLoginForm />
+
+    <FormV4 />
     </div>
   )
 }

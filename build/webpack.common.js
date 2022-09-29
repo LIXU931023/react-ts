@@ -1,4 +1,5 @@
 const HtmlWebpackPlagin = require('html-webpack-plugin')
+const tsImportPluginFactory = require('ts-import-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path');
@@ -22,7 +23,17 @@ module.exports = {
 					{
 						loader: 'ts-loader',
 						options: {
-							transpileOnly: true
+							transpileOnly: true,
+							getCustomTransformers: () => ({
+								before: [ tsImportPluginFactory({
+									libraryName: 'antd',
+									libraryDirectory: 'lib',
+									style: 'css',
+								}) ]
+							}),
+							compilerOptions: {
+								module: 'es2015'
+							}
 						}
 					},
 					{
@@ -56,7 +67,9 @@ module.exports = {
 								],
 								"@babel/preset-react"
 							],
-							plugins: ["@babel/plugin-syntax-import-meta"]
+							plugins: [
+								"@babel/plugin-proposal-class-properties",
+							]
 						}
 					},
 					// {
@@ -68,7 +81,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(jpg|png|gif)$/,
+				test: /\.(jpg|png|gif|svg)$/,
 				use: {
 					loader: 'url-loader',
 					options: {
@@ -103,6 +116,58 @@ module.exports = {
 					'postcss-loader'
 				],
 			},
+			{
+				test: /\.less$/,
+				exclude: /node_modules[\\/]antd-V4[\\/]/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: false,
+						},
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'less-loader',
+						options: {
+							javascriptEnabled: true,
+							// sourceMap: false,
+						}
+					},
+				],
+			},
+			{
+				test: /\.less$/,
+				include: /node_modules[\\/]antd-V4/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: false,
+						},
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'less-loader',
+						options: {
+							modifyVars: {
+								'ant-prefix': 'antd-V4',
+							},
+							javascriptEnabled: true,
+						}
+					},
+				],
+			},
 		]
   },
   plugins: [
@@ -132,41 +197,76 @@ module.exports = {
 		runtimeChunk: 'single',
 		minimizer: [],
 		splitChunks: {
-			chunks: 'all',
-			minSize: 2000,
-      maxSize: 0,
+			minSize: 20000,
+      // maxSize: 150000,
       minChunks: 1,
       maxAsyncRequests: 5,
-      maxInitialRequests: 3,
+      maxInitialRequests: 7,
       automaticNameDelimiter: '~',
       automaticNameMaxLength: 30,
       name: true,
       cacheGroups: {
-				pincode: {
-          test: /[\\/]node_modules[\\/]?pin-code-react[\\/]/,
-					priority: 40,
-					chunks: 'all',
-					name: 'pincode',
+				antIcon: {
+          test: /[\\/]node_modules[\\/]@ant-design[\\/]/,
+					priority: 20,
+					name: 'ant-icon',
+					chunks: 'async',
 					reuseExistingChunk: true,
         },
 				reactjs: {
           test: /[\\/]node_modules[\\/](react-dom|react)[\\/]/,
-					priority: 10,
+					priority: 21,
 					name: 'reactjs',
+					chunks: 'initial',
+					reuseExistingChunk: true,
+        },
+				formjs: {
+          test: /[\\/]node_modules[\\/]rc-field-form[\\/]/,
+					priority: 21,
+					name: 'formjs',
+					chunks: 'async',
+					reuseExistingChunk: true,
+        },
+				utils: {
+					test: /[\\/]node_modules[\\/](core-js|modules|rc-form|lodash|rc-overflow)[\\/]/,
+					priority: 23,
+					name: 'formjs',
+					chunks: 'async',
+					reuseExistingChunk: true,
+				},
+				antd3: {
+          test: /[\\/]node_modules[\\/]antd[\\/]/,
+					priority: 15,
+					name: 'antd3',
+					chunks: 'async',
+					reuseExistingChunk: true,
+        },
+
+				antd4: {
+          test: /[\\/]node_modules[\\/]antd-V4[\\/]/,
+					priority: 18,
+					name: 'antd4',
+					chunks: 'async',
 					reuseExistingChunk: true,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
 					priority: 0,
 					name: 'vendor',
-					chunks: 'all',
+					chunks: 'initial',
 					reuseExistingChunk: true,
         },
-        default: {
-          priority: -20,
+				initialChunks: {
+					priority: 0,
+					name: 'initialChunks',
+					chunks: 'initial',
 					reuseExistingChunk: true,
-					name: 'common'
-        }
+				},
+				default: {
+          minChunks: 2,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
       }
 		}
 	}

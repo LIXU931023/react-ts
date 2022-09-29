@@ -1,10 +1,10 @@
-@import '../../base.scss';
+// @import '../../base.scss';
 
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $background;
+  // background: $background;
   position: relative;
   z-index: 300;
   -webkit-line-clamp: 4;
@@ -38,6 +38,12 @@ ul {
   }
 
   &:focus ~ ul {
+    display: block;
+  }
+}
+
+.antd-V4-cascader-menus {
+  ul {
     display: block;
   }
 }

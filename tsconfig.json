@@ -3,7 +3,7 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "outDir": "build/dist",
-    "module": "esnext",
+    "module": "ESNext",
     "target": "es2017",
     "lib": ["es6", "dom", "esnext.asynciterable", "es2017"],
     "sourceMap": true,
