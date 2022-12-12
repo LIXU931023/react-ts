@@ -1,0 +1,14 @@
+.login-container {
+  height: 100vh;
+  background-image: linear-gradient(to right, rgb(185, 185, 22), rgb(207, 19, 232));
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > div {
+    width: 25%;
+    min-width: 300px;
+    max-width: 500px;
+  }
+}

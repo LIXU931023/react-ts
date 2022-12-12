@@ -23,6 +23,7 @@ const devConfig = {
 		devServer: {
 			contentBase: path.resolve(__dirname, "../example"),
 			compress: true,
+			historyApiFallback: true,
 			port,
 			stats: 'errors-only',
 			proxy: {

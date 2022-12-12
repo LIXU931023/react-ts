@@ -1,0 +1,25 @@
+.global-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .global-header {
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+
+  .global-footer {
+    margin: 20px 0;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .global-center {
+    flex: 1;
+
+    .right-content {
+      margin-left: 20px;
+      background-color: #fff;
+    }
+  }
+}

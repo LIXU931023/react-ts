@@ -5,6 +5,4 @@ const App = lazy(() => import('./app'));
 
 
 
-render(<Suspense fallback={<div>loading</div>}><App/></Suspense>, document.getElementById('root'))
-
-
+render(<Suspense fallback={<div>loading</div>}><App /></Suspense>, document.getElementById('root'))

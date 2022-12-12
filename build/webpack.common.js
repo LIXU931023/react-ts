@@ -36,12 +36,6 @@ module.exports = {
 							}
 						}
 					},
-					{
-						loader: 'inline-px-to-vw-loader',
-						options: {
-							noConvertPropertyList: ['columnCount'],
-						}
-					},
 				]
 			},
       { 
@@ -72,12 +66,6 @@ module.exports = {
 							]
 						}
 					},
-					// {
-					// 	loader: path.resolve(__dirname, '../loaders/inlinePxToVW'),
-					// 	options: {
-					// 		noConvertPropertyList: ['columnCount'],
-					// 	}
-					// },
 				]
 			},
 			{
@@ -118,7 +106,7 @@ module.exports = {
 			},
 			{
 				test: /\.less$/,
-				exclude: /node_modules[\\/]antd-V4[\\/]/,
+				include: /node_modules[\\/]antd/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
@@ -134,37 +122,6 @@ module.exports = {
 					},
 					{
 						loader: 'less-loader',
-						options: {
-							javascriptEnabled: true,
-							// sourceMap: false,
-						}
-					},
-				],
-			},
-			{
-				test: /\.less$/,
-				include: /node_modules[\\/]antd-V4/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: false,
-						},
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1
-						}
-					},
-					{
-						loader: 'less-loader',
-						options: {
-							modifyVars: {
-								'ant-prefix': 'antd-V4',
-							},
-							javascriptEnabled: true,
-						}
 					},
 				],
 			},
@@ -173,7 +130,7 @@ module.exports = {
   plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlagin({
-			template: './example/index.html',
+			template: path.resolve(__dirname, '../public/index.html'),
 		}),
 		new MiniCssExtractPlugin({
       filename: '[name].css'
@@ -234,16 +191,8 @@ module.exports = {
 					chunks: 'async',
 					reuseExistingChunk: true,
 				},
-				antd3: {
-          test: /[\\/]node_modules[\\/]antd[\\/]/,
-					priority: 15,
-					name: 'antd3',
-					chunks: 'async',
-					reuseExistingChunk: true,
-        },
-
 				antd4: {
-          test: /[\\/]node_modules[\\/]antd-V4[\\/]/,
+          test: /[\\/]node_modules[\\/]antd[\\/]/,
 					priority: 18,
 					name: 'antd4',
 					chunks: 'async',
