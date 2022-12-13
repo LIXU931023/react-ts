@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
-import { RouteComponentProps, Switch, Route } from 'react-router-dom';
+import React, { useEffect, lazy } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import type { RouteComponentProps } from 'react-router-dom';
 import { Layout } from 'antd';
-import GlobalMenu from './menu';
-import HeaderContent from './components/head-content';
 import useLogin from './use-login';
 import { IRouteItem } from './config/type';
+
+const HeaderContent = lazy(() => import ('./components/head-content'))
+const GlobalMenu = lazy(() => import('./menu'));
 
 
 const { Header, Footer, Sider, Content } = Layout;

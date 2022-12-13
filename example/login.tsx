@@ -3,8 +3,9 @@ import { Button, Form, Input } from 'antd';
 import type { RouteComponentProps } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import { IRouteItem } from './config/type';
-import { LoginParams } from '../service/type';
-import { loginUser } from '../service/login';
+import { LoginParams } from './service/type';
+import { fetchLoginUser } from './store/user-slice';
+import { useAppDispatch } from '@/hooks/redux';
 import './login.scss';
 
 
@@ -14,10 +15,12 @@ interface ILoginProps extends RouteComponentProps {
 
 const Login: React.FC<ILoginProps> = (props) => {
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
   const onFinish = async (values: LoginParams) => {
     try {
       setLoading(true);
-      const result = await loginUser(values);
+      const callbackPromise = await dispatch(fetchLoginUser(values)).unwrap;
+      const result = await callbackPromise();
       if (result.success) {
         Cookies.set('user-token', result.token);
         props.history.replace('/');

@@ -1,7 +1,6 @@
 import { IParams, LoginResponse, LoginParams } from './type';
 import { loginResponse } from '../mock/login';
-
-const sleep = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));
+import { sleep } from './utils';
 
 const getResponseData = (params: IParams<LoginParams>) => {
   return loginResponse[params.url];

@@ -1,6 +1,6 @@
-npm install
-npm start
-npm run build
+### npm install
+### npm start
+### npm run build
 
-ts+react antd3与4混用情况调试 打包优化，懒加载组件
+ts + react + antd@4 + @reduxjs/toolkit + redux + react-redux 增加一个后台项目
 

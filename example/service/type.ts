@@ -15,4 +15,5 @@ export type LoginParams = {
 export type LoginResponse = {
   success: boolean;
   token: string;
+  phoneNumber: string;
 }
