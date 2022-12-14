@@ -1,17 +1,15 @@
 import React from "react";
 import Cookies from "js-cookie";
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Space } from 'antd';
+import { Space, Dropdown } from 'antd';
 import type { RouteComponentProps } from 'react-router-dom';
 import type { MenuProps } from 'antd';
-import { increment, decrement, fetchNewData } from '@/store/counter-slice';
 import { clearInfo } from '@/store/user-slice'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import './index.scss';
 
 
 const HeaderContent: React.FC<RouteComponentProps> = () => {
-  const counter = useAppSelector(state => state.counter)
   const user = useAppSelector(state => state.user)
   const dispatch = useAppDispatch();
 
@@ -37,12 +35,6 @@ const HeaderContent: React.FC<RouteComponentProps> = () => {
   return (
     <div className="header-content">
       <img className="logo" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.lnstzy.cn%2Faoaodcom%2F2018-01%2F12%2F201801120640512624.jpg.h700.jpg&refer=http%3A%2F%2Fimage.lnstzy.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1673413454&t=44666c990a0ab1ce417a4574eb8ea11e" alt="" />
-      
-      <button onClick={() => dispatch(increment())}>增加</button>
-      <button onClick={() => dispatch(decrement())}>减少</button>
-      <span>{counter.value}</span>
-      <button onClick={() => dispatch(fetchNewData())}>异步12</button>
-      <span>{counter.status}</span>
       <Dropdown
       overlayStyle={{ width: 100 }}
       menu={{

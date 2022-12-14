@@ -18,8 +18,10 @@
     flex: 1;
 
     .right-content {
+      padding: 30px;
       margin-left: 20px;
       background-color: #fff;
+      overflow-y: scroll;
     }
   }
 }

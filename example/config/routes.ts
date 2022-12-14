@@ -3,7 +3,6 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import React, { lazy } from 'react';
 import { IRouteItem } from './type';
 
-
 export const routes:IRouteItem[] = [
   {
     path: '/login',
@@ -15,10 +14,10 @@ export const routes:IRouteItem[] = [
     component: lazy(() => import('../layout')),
     routes: [
       {
-        path: '/busy-work',
+        path: '/step-form',
         icon: React.createElement(LaptopOutlined),
-        name: '努力工作',
-        component: lazy(() => import('../components/busy-work'))
+        name: '步骤表单',
+        component: lazy(() => import('../components/step-form'))
       },
       {
         path: '/table-list',
@@ -30,19 +29,16 @@ export const routes:IRouteItem[] = [
         path: '/show-data',
         icon: React.createElement(UserOutlined),
         name: '展示数据',
-        // exact: true,
         component: lazy(() => import('../components/show-data'))
       },
       {
         path: '/sell-data',
         icon: React.createElement(LaptopOutlined),
         name: '销售数据',
-        // exact: true,
         component: lazy(() => import('../components/sell-data'))
       },
       {
         path: '/welcome',
-        // exact: true,
         component: lazy(() => import('../components/welcome'))
       },
       {

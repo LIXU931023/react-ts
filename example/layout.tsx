@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import type { RouteComponentProps } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -26,18 +26,29 @@ const MyLayout: React.FC<ILayout> = (props) => {
   return (
     <Layout className='global-container'>
       <Header className='global-header'>
-        <HeaderContent {...props} />
+        <Suspense fallback={<div>loading...</div>}>
+          <HeaderContent {...props} />
+        </Suspense>
       </Header>
       <Layout className='global-center'>
-        <Sider><GlobalMenu {...props} /></Sider>
+        <Sider>
+          <Suspense fallback={<div>loading...</div>}>
+            <GlobalMenu {...props} />
+          </Suspense>
+        </Sider>
         <Content className='right-content'>
           {
           innerRoutes && innerRoutes.length > 0 && (
             <Switch>
               {
-                innerRoutes.map((item) => {
+                innerRoutes.map((item, index) => {
+                  const Component = item.component;
                   return (
-                    <Route component={item.component} key={item.path}
+                    <Route render={(prop) => (
+                      <Suspense fallback={<div>loading...</div>}>
+                        <Component innerRoutes={item.routes} key={String(index)} {...prop} />
+                      </Suspense>
+                    )} key={item.path}
                     path={item.path} />
                   )
                 })

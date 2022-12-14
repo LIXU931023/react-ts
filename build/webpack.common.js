@@ -1,6 +1,7 @@
 const HtmlWebpackPlagin = require('html-webpack-plugin')
 const tsImportPluginFactory = require('ts-import-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const webpack = require('webpack')
 const path = require('path');
 const ProcessBarWebpackPlugin = require('progress-bar-webpack-plugin');
@@ -59,7 +60,7 @@ module.exports = {
 										corejs: 2
 									}
 								],
-								"@babel/preset-react"
+								"@babel/preset-react",
 							],
 							plugins: [
 								"@babel/plugin-proposal-class-properties",
@@ -129,11 +130,12 @@ module.exports = {
   },
   plugins: [
 		new CleanWebpackPlugin(),
+		new AntdDayjsWebpackPlugin(),
 		new HtmlWebpackPlagin({
 			template: path.resolve(__dirname, '../public/index.html'),
 		}),
 		new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[contenthash].css'
 		}),
 		new webpack.ProvidePlugin({ _	: 'lodash'}),
 		new ProcessBarWebpackPlugin(),
@@ -155,17 +157,16 @@ module.exports = {
 		minimizer: [],
 		splitChunks: {
 			minSize: 20000,
-      // maxSize: 150000,
       minChunks: 1,
       maxAsyncRequests: 5,
-      maxInitialRequests: 7,
+      maxInitialRequests: 10,
       automaticNameDelimiter: '~',
       automaticNameMaxLength: 30,
       name: true,
       cacheGroups: {
 				antIcon: {
           test: /[\\/]node_modules[\\/]@ant-design[\\/]/,
-					priority: 20,
+					priority: 36,
 					name: 'ant-icon',
 					chunks: 'async',
 					reuseExistingChunk: true,
@@ -177,30 +178,55 @@ module.exports = {
 					chunks: 'initial',
 					reuseExistingChunk: true,
         },
-				formjs: {
+				rcform: {
           test: /[\\/]node_modules[\\/]rc-field-form[\\/]/,
-					priority: 21,
-					name: 'formjs',
+					priority: 33,
+					name: 'rcform',
 					chunks: 'async',
 					reuseExistingChunk: true,
         },
-				utils: {
-					test: /[\\/]node_modules[\\/](core-js|modules|rc-form|lodash|rc-overflow)[\\/]/,
-					priority: 23,
-					name: 'formjs',
+				rcTreeAndTable: {
+          test: /[\\/]node_modules[\\/](rc-table|rc-tree|rc-select)[\\/]/,
+					priority: 43,
+					name: 'rc-tree-and-table',
 					chunks: 'async',
 					reuseExistingChunk: true,
-				},
+        },
+				rcTriggerList: {
+          test: /[\\/]node_modules[\\/](rc-align|rc-tree-select|rc-cascader|rc-menu|rc-field-form)[\\/]es/,
+					priority: 41,
+					name: 'rc-trigger-list',
+					chunks: 'async',
+        },
+				rcUtils: {
+          test: /[\\/]node_modules[\\/](rc-util|rc-notification|rc-trigger|rc-pagination|rc-virtual-list)[\\/]/,
+					priority: 42,
+					name: 'rc-util',
+					chunks: 'async',
+        },
+				node: {
+          test: /[\\/]node_modules[\\/]antd[\\/]node_modules[\\/]/,
+					priority: 44,
+					name: 'inner-module',
+					chunks: 'async',
+        },
+				antdLib: {
+          test: /[\\/]node_modules[\\/]antd[\\/]lib/,
+					priority: 48,
+					name: 'antdLib',
+					chunks: 'async',
+					reuseExistingChunk: true,
+        },
 				antd4: {
-          test: /[\\/]node_modules[\\/]antd[\\/]/,
-					priority: 18,
+          test: /[\\/]node_modules[\\/]antd/,
+					priority: 5,
 					name: 'antd4',
 					chunks: 'async',
 					reuseExistingChunk: true,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-					priority: 0,
+					priority: 2,
 					name: 'vendor',
 					chunks: 'initial',
 					reuseExistingChunk: true,
@@ -212,8 +238,9 @@ module.exports = {
 					reuseExistingChunk: true,
 				},
 				default: {
-          minChunks: 2,
+					minChunks: 2,
           priority: -10,
+					name: 'default',
           reuseExistingChunk: true,
         },
       }
