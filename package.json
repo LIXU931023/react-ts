@@ -7,7 +7,9 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config ./build/webpack.dev.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "build:comp": "cross-env NODE_ENV=production webpack --config ./build/webpack.component.js",
-    "lint": "eslint ./example/**.ts ./example/**.tsx --fix"
+    "lint": "eslint ./example/**.ts ./example/**.tsx --fix",
+    "precommit": "lint-staged",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "author": "lixu",
   "license": "ISC",
@@ -97,6 +99,10 @@
       "pre-commit": "lint-staged"
     }
   },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
   "lint-staged": {
     "**/*.{ts,tsx}": "npm run lint"
   }
