@@ -98,8 +98,6 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint ./example --fix"
-    ]
+    "**/*.{ts,tsx}": "npm run lint"
   }
 }
