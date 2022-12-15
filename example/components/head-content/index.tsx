@@ -1,7 +1,7 @@
 import React from "react";
 import Cookies from "js-cookie";
 import { DownOutlined } from '@ant-design/icons';
-import { Space, Dropdown } from 'antd';
+import { Dropdown, Space } from 'antd';
 import type { RouteComponentProps } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { clearInfo } from '@/store/user-slice'

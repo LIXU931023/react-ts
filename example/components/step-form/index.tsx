@@ -6,13 +6,13 @@ import {
   message,
   Form,
   Cascader,
-  Input,
   Radio,
   DatePicker,
   InputNumber,
   Switch,
   TreeSelect,
   Select,
+  Input,
 } from 'antd';
 import './index.scss';
 
