@@ -7,8 +7,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config ./build/webpack.dev.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "build:comp": "cross-env NODE_ENV=production webpack --config ./build/webpack.component.js",
-    "lint": "eslint ./example/**.ts ./example/**.tsx --fix",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
+    "lint": "eslint ./example/**.ts ./example/**.tsx --fix"
   },
   "author": "lixu",
   "license": "ISC",
@@ -77,7 +76,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
     "postcss-pxtorem": "^5.1.1",
-    "pre-commit": "^1.2.2",
     "progress-bar-webpack-plugin": "^2.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
