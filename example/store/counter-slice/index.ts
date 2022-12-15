@@ -35,14 +35,14 @@ export const counterSlice = createSlice({
     }
   },
   extraReducers (builder) {
-    builder.addCase(fetchNewData.pending, (state, action) => {
+    builder.addCase(fetchNewData.pending, (state) => {
       state.status = 'loading';
     })
     .addCase(fetchNewData.fulfilled, (state, action) => {
       state.status = 'success';
       state.value += action.payload
     })
-    .addCase(fetchNewData.rejected, (state, action) => {
+    .addCase(fetchNewData.rejected, (state) => {
       state.status = 'failed';
     })
   }

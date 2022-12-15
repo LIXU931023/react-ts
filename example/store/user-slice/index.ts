@@ -38,7 +38,7 @@ export const userSlice = createSlice({
     }
   },
   extraReducers(builder) {
-    builder.addCase(fetchLoginUser.pending, (state) => {
+    builder.addCase(fetchLoginUser.pending, () => {
     })
     .addCase(fetchLoginUser.fulfilled, (state, action: PayloadAction<IUserInfo>) => {
       const { nickname, phoneNumber, token } = action.payload
@@ -47,7 +47,7 @@ export const userSlice = createSlice({
       state.token =  token;
       localStorage.setItem('user', JSON.stringify(action.payload));
     })
-    .addCase(fetchLoginUser.rejected, (state) => {
+    .addCase(fetchLoginUser.rejected, () => {
     })
   }
 })

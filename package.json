@@ -7,7 +7,8 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config ./build/webpack.dev.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "build:comp": "cross-env NODE_ENV=production webpack --config ./build/webpack.component.js",
-    "lint": "eslint ./example/**.ts ./example/**.tsx --fix"
+    "prepare": "husky install",
+    "lint-staged": "eslint --ext .ts,.tsx example --fix"
   },
   "author": "lixu",
   "license": "ISC",
@@ -35,6 +36,8 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@types/js-cookie": "^3.0.2",
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.12",
@@ -90,12 +93,5 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1",
     "workbox-webpack-plugin": "^4.3.1"
-  },
-  "pre-commit": [
-    "precommit-msg",
-    "lint"
-  ],
-  "lint-staged": {
-    "**/*.{ts,tsx}": "npm run lint"
   }
 }

@@ -3,7 +3,7 @@ import type { RouteComponentProps } from 'react-router-dom';
 import { Badge, Descriptions } from 'antd';
 import './index.scss';
 
-const SellData: React.FC<RouteComponentProps> = (props) => {
+const SellData: React.FC<RouteComponentProps> = () => {
   return (
     <div>
       <Descriptions title="User Info" bordered>

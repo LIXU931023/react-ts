@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import './index.scss';
 
-const TableList: React.FC<RouteComponentProps> = (props) => {
+const TableList: React.FC<RouteComponentProps> = () => {
   interface DataType {
     key: React.Key;
     name: string;

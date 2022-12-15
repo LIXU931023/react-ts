@@ -16,7 +16,7 @@ import {
 } from 'antd';
 import './index.scss';
 
-const BusyWorks: React.FC<RouteComponentProps> = (props) => {
+const BusyWorks: React.FC<RouteComponentProps> = () => {
   const [form] = Form.useForm();
   const [current, setCurrent] = useState(0);
   const [submitData, setSubmitData] = useState('');
