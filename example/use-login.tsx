@@ -1,12 +1,12 @@
-import { useHistory } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const useLogin = () => {
-  const history = useHistory();
+  const history = useHistory()
   if (!Cookies.get('user-token')) {
     console.log('uselogin')
     history.replace('/login')
   }
 }
 
-export default useLogin;
+export default useLogin

@@ -8,8 +8,8 @@ import { formatMenu } from './utils';
 const GlobalMenu: React.FC<MenuProps & ILayout> = (props) => {
   const items = formatMenu(props.innerRoutes);
 
-  const handleClick:MenuProps['onClick'] = ({ item, key }) => {
-    props.history.push(key);
+  const handleClick:MenuProps['onClick'] = (e) => {
+    props.history.push(e.key);
   }
   return (
     <Menu

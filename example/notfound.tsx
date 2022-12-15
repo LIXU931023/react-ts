@@ -9,7 +9,7 @@ interface ILoginProps extends RouteComponentProps {
   innerRoutes: IRouteItem[]
 }
 
-const NotFound: React.FC<ILoginProps> = (props) => {
+const NotFound: React.FC<ILoginProps> = () => {
   const history = useHistory();
   const backHome = () => {
     history.replace('/');
