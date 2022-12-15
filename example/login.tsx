@@ -13,7 +13,7 @@ interface ILoginProps extends RouteComponentProps {
   innerRoutes: IRouteItem[]
 }
 
-const data = [];
+const data = [122];
 
 const Login: React.FC<ILoginProps> = (props) => {
   const [loading, setLoading] = useState(false);
