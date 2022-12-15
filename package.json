@@ -93,11 +93,6 @@
     "webpack-merge": "^4.2.1",
     "workbox-webpack-plugin": "^4.3.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "pre-commit": [
     "precommit-msg",
     "lint"
