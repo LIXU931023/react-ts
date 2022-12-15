@@ -135,7 +135,8 @@ module.exports = {
 			template: path.resolve(__dirname, '../public/index.html'),
 		}),
 		new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: '[name].[contenthash].css',
+			ignoreOrder: true,
 		}),
 		new webpack.ProvidePlugin({ _	: 'lodash'}),
 		new ProcessBarWebpackPlugin(),
