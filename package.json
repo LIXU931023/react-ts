@@ -76,6 +76,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
     "postcss-pxtorem": "^5.1.1",
+    "pre-commit": "^1.2.2",
     "progress-bar-webpack-plugin": "^2.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
