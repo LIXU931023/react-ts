@@ -8,8 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "build:comp": "cross-env NODE_ENV=production webpack --config ./build/webpack.component.js",
     "prepare": "husky install",
-    "lint-staged": "eslint --ext .ts,.tsx example --fix",
-    "complete": "echo '执行结束'"
+    "lint-staged": "eslint --ext .ts,.tsx example --fix"
   },
   "author": "lixu",
   "license": "ISC",

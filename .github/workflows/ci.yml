@@ -30,6 +30,3 @@ jobs:
 
       - name: running-lint
         run: npm run lint-staged
-
-      - name: show-message
-        run: npm run complete
