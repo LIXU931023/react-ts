@@ -22,10 +22,10 @@ jobs:
         with:
           path: |
             **/node_modules
-          key: ${{runner.OS}}-${{hashFiles(**/package-lock)}}
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock')}}
 
       - name: install dependencies
-        if: steps.cache-dependencies.outputs.cache.hit != 'true'
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: npm install
 
       - name: running-lint
