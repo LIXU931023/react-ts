@@ -64,6 +64,7 @@ module.exports = {
 							],
 							plugins: [
 								"@babel/plugin-proposal-class-properties",
+								"@babel/plugin-syntax-dynamic-import",
 							]
 						}
 					},
@@ -160,38 +161,28 @@ module.exports = {
 			minSize: 20000,
       minChunks: 1,
       maxAsyncRequests: 5,
-      maxInitialRequests: 10,
+      maxInitialRequests: 7,
       automaticNameDelimiter: '~',
       automaticNameMaxLength: 30,
       name: true,
       cacheGroups: {
 				antIcon: {
           test: /[\\/]node_modules[\\/]@ant-design[\\/]/,
-					priority: 36,
+					priority: 40,
 					name: 'ant-icon',
 					chunks: 'async',
-					reuseExistingChunk: true,
         },
 				reactjs: {
           test: /[\\/]node_modules[\\/](react-dom|react)[\\/]/,
 					priority: 21,
 					name: 'reactjs',
 					chunks: 'initial',
-					reuseExistingChunk: true,
-        },
-				rcform: {
-          test: /[\\/]node_modules[\\/]rc-field-form[\\/]/,
-					priority: 33,
-					name: 'rcform',
-					chunks: 'async',
-					reuseExistingChunk: true,
         },
 				rcTreeAndTable: {
           test: /[\\/]node_modules[\\/](rc-table|rc-tree|rc-select)[\\/]/,
 					priority: 43,
 					name: 'rc-tree-and-table',
 					chunks: 'async',
-					reuseExistingChunk: true,
         },
 				rcTriggerList: {
           test: /[\\/]node_modules[\\/](rc-align|rc-tree-select|rc-cascader|rc-menu|rc-field-form)[\\/]es/,
@@ -205,10 +196,10 @@ module.exports = {
 					name: 'rc-util',
 					chunks: 'async',
         },
-				node: {
-          test: /[\\/]node_modules[\\/]antd[\\/]node_modules[\\/]/,
+				rcUtilsTwo: {
+          test: /[\\/]node_modules[\\/](rc-picker|rc-field-form|rc-util)[\\/]/,
 					priority: 44,
-					name: 'inner-module',
+					name: 'rcUtilsTwo',
 					chunks: 'async',
         },
 				antdLib: {
@@ -216,33 +207,28 @@ module.exports = {
 					priority: 48,
 					name: 'antdLib',
 					chunks: 'async',
-					reuseExistingChunk: true,
         },
-				antd4: {
-          test: /[\\/]node_modules[\\/]antd/,
-					priority: 5,
-					name: 'antd4',
+				antdLibTwo: {
+          test: /[\\/]node_modules[\\/]antd[\\/]lib[\\/](result|table|form)/,
+					priority: 55,
+					name: 'antdLibTwo',
 					chunks: 'async',
-					reuseExistingChunk: true,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
 					priority: 2,
 					name: 'vendor',
 					chunks: 'initial',
-					reuseExistingChunk: true,
         },
 				initialChunks: {
 					priority: 0,
 					name: 'initialChunks',
 					chunks: 'initial',
-					reuseExistingChunk: true,
 				},
 				default: {
 					minChunks: 2,
           priority: -10,
-					name: 'default',
-          reuseExistingChunk: true,
+					name: 'default'
         },
       }
 		}

@@ -3,10 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import type { RouteComponentProps } from 'react-router-dom';
 import { Layout } from 'antd';
 import useLogin from './use-login';
+import GlobalMenu from './menu';
 import { IRouteItem } from './config/type';
 
 const HeaderContent = lazy(() => import ('./components/head-content'))
-const GlobalMenu = lazy(() => import('./menu'));
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -32,9 +32,7 @@ const MyLayout: React.FC<ILayout> = (props) => {
       </Header>
       <Layout className='global-center'>
         <Sider>
-          <Suspense fallback={<div>loading...</div>}>
-            <GlobalMenu {...props} />
-          </Suspense>
+          <GlobalMenu {...props} />
         </Sider>
         <Content className='right-content'>
           {
