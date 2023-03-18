@@ -3,10 +3,18 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import React, { lazy } from 'react';
 import { IRouteItem } from './type';
 
+const Login = lazy(() => import(/* webpackChunkName: "Logins" */ '../login'))
+const StepForm = lazy(() => import(/* webpackChunkName: "step-form" */'../components/step-form'))
+const TableList = lazy(() => import(/* webpackChunkName: "table-list" */ '../components/table-list'))
+const ShowData = lazy(() => import(/* webpackChunkName: "show-data" */ '../components/show-data'))
+const SellData = lazy(() => import(/* webpackChunkName: "sell-data" */ '../components/sell-data'))
+const Welcome = lazy(() => import(/* webpackChunkName: "welcome" */ '../components/welcome'))
+const NotFound = lazy(() => import(/* webpackChunkName: "not-found" */ '../notfound'))
+
 export const routes:IRouteItem[] = [
   {
     path: '/login',
-    component: lazy(() => import('../login'))
+    component: Login
   },
   {
     path: '/',
@@ -17,38 +25,38 @@ export const routes:IRouteItem[] = [
         path: '/step-form',
         icon: React.createElement(LaptopOutlined),
         name: '步骤表单',
-        component: lazy(() => import('../components/step-form'))
+        component: StepForm,
       },
       {
         path: '/table-list',
         icon: React.createElement(NotificationOutlined),
         name: '表格',
-        component: lazy(() => import('../components/table-list'))
+        component: TableList,
       },
       {
         path: '/show-data',
         icon: React.createElement(UserOutlined),
         name: '展示数据',
-        component: lazy(() => import('../components/show-data'))
+        component: ShowData,
       },
       {
         path: '/sell-data',
         icon: React.createElement(LaptopOutlined),
         name: '销售数据',
-        component: lazy(() => import('../components/sell-data'))
+        component: SellData,
       },
       {
         path: '/welcome',
-        component: lazy(() => import('../components/welcome'))
+        component: Welcome,
       },
       {
         path: '/*',
-        component: lazy(() => import('../notfound'))
+        component: NotFound,
       },
     ]
   },
   {
     path: '*',
-    component: lazy(() => import('../notfound'))
+    component: NotFound,
   },
 ]

@@ -54,6 +54,7 @@ const devConfig = {
 			filename: '[name].js',
 			path: path.resolve(__dirname, '../dist'),
 			publicPath: "/",
+			chunkFilename: '[name].chunk.js',
 		}
 }
 

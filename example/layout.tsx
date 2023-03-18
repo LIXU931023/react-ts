@@ -6,7 +6,7 @@ import useLogin from './use-login';
 import GlobalMenu from './menu';
 import { IRouteItem } from './config/type';
 
-const HeaderContent = lazy(() => import ('./components/head-content'))
+const HeaderContent = lazy(() => import (/* webpackChunkName: 'header' */'./components/head-content'))
 
 
 const { Header, Footer, Sider, Content } = Layout;

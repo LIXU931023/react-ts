@@ -6,7 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const produConfig = {
+const productConfig = {
   mode: process.env.NODE_ENV,
   plugins: [
 		new WorkboxPlugin.GenerateSW({
@@ -25,6 +25,7 @@ const produConfig = {
 		filename: '[name].[contenthash].js',
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: "/",
+		chunkFilename: '[name].[contenthash].js',
 	}
 }
-module.exports = merge(commonConfig, produConfig);
+module.exports = merge(commonConfig, productConfig);
