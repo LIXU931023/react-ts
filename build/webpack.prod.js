@@ -28,6 +28,7 @@ const productConfig = {
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: "/",
 		chunkFilename: '[name].[contenthash].js',
+		hashDigestLength: 10,
 	}
 }
 module.exports = merge(commonConfig, productConfig);
