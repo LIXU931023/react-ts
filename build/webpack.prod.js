@@ -3,6 +3,7 @@ const commonConfig = require('./webpack.common');
 const merge = require('webpack-merge');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -14,6 +15,7 @@ const productConfig = {
 			skipWaiting: true
 		}),
 		new BundleAnalyzerPlugin(),
+		new WebpackManifestPlugin()
 	],
 	optimization: {
 		minimizer: [new TerserPlugin({

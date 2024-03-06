@@ -56,7 +56,6 @@ const Login: React.FC<ILoginProps> = (props) => {
           >
             <Input />
           </Form.Item>
-
           <Form.Item
             label="密码"
             name="password"

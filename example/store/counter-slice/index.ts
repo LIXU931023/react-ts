@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 
+
 export const fetchNewData = createAsyncThunk('counter/fetchNewData', async (params, action) => {
   try {
     await new Promise((resolve) => setTimeout(() => {
@@ -12,6 +13,18 @@ export const fetchNewData = createAsyncThunk('counter/fetchNewData', async (para
   }
 })
 
+
+
+
+
+/**
+ * 
+ * @date 2023/11/17 - 20:37:57
+ * @author LiXu
+ * @
+ * @interface CounterState
+ * @typedef {CounterState}
+ */
 interface CounterState {
   value: number;
   status: 'init' | 'loading' | 'success' | 'failed',
