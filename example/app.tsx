@@ -9,7 +9,6 @@ import './app.scss';
 
 const App: React.FC = () => {
   return (
-    
     <Provider store={store}>
       <BrowserRouter>
         <RouterComponent routes={routes} />
