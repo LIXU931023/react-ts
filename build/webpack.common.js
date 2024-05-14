@@ -15,6 +15,10 @@ module.exports = {
 			'@': path.resolve(__dirname, '../example')
 		},
 	},
+	externals: {
+    'react': 'React',
+		'react-dom': 'ReactDOM',
+  },
   module: {
     rules: [
 			{
@@ -78,7 +82,6 @@ module.exports = {
 			},
 			{
 				test: /\.less$/,
-				include: /node_modules[\\/]antd/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
@@ -122,73 +125,42 @@ module.exports = {
 			},
 		})
 	],
-
 	optimization: {
-		usedExports: true,
 		runtimeChunk: 'single',
-		minimizer: [],
 		splitChunks: {
-			minSize: 20000,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 7,
-      automaticNameDelimiter: '~',
-      automaticNameMaxLength: 30,
-      name: true,
+			minSize: 30000,
+			maxSize: 240000,
+			chunks: 'all',
       cacheGroups: {
 				antIcon: {
           test: /[\\/]node_modules[\\/]@ant-design[\\/]/,
 					priority: 40,
 					name: 'ant-icon',
-					chunks: 'async',
-        },
-				reactjs: {
-          test: /[\\/]node_modules[\\/](react-dom|react)[\\/]/,
-					priority: 21,
-					name: 'reactjs',
-					chunks: 'initial',
         },
 				rcTreeAndTable: {
           test: /[\\/]node_modules[\\/](rc-table|rc-tree|rc-select)[\\/]/,
 					priority: 43,
 					name: 'rc-tree-and-table',
-					chunks: 'async',
         },
 				rcTriggerList: {
           test: /[\\/]node_modules[\\/](rc-align|rc-tree-select|rc-cascader|rc-menu|rc-field-form)[\\/]es/,
 					priority: 41,
 					name: 'rc-trigger-list',
-					chunks: 'async',
         },
 				rcUtils: {
           test: /[\\/]node_modules[\\/](rc-util|rc-notification|rc-trigger|rc-pagination|rc-virtual-list)[\\/]/,
 					priority: 42,
 					name: 'rc-util',
-					chunks: 'async',
-        },
-				rcUtilsTwo: {
-          test: /[\\/]node_modules[\\/](rc-picker|rc-field-form|rc-util)[\\/]/,
-					priority: 44,
-					name: 'rcUtilsTwo',
-					chunks: 'async',
         },
 				antdLib: {
           test: /[\\/]node_modules[\\/]antd[\\/]lib/,
 					priority: 48,
 					name: 'antdLib',
-					chunks: 'async',
-        },
-				antdLibTwo: {
-          test: /[\\/]node_modules[\\/]antd[\\/]lib[\\/](result|table|form)/,
-					priority: 55,
-					name: 'antdLibTwo',
-					chunks: 'async',
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
 					priority: 2,
 					name: 'vendor',
-					chunks: 'initial',
         },
 				initialChunks: {
 					priority: 0,

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import type { RouteComponentProps } from 'react-router-dom';
 import Worker from './answer.worker.ts';
+import './index.less';
 
 const Welcome: React.FC<RouteComponentProps> = () => {
 
@@ -16,7 +17,9 @@ const Welcome: React.FC<RouteComponentProps> = () => {
   }, [])
   return (
     <div>
+      <header className='header'>header</header>
       Welcome
+      <footer className='footer'>footer</footer>
     </div>
   )
 }
