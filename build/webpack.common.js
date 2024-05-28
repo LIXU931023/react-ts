@@ -18,6 +18,7 @@ module.exports = {
 	externals: {
     'react': 'React',
 		'react-dom': 'ReactDOM',
+		'antd': 'antd',
   },
   module: {
     rules: [
@@ -130,43 +131,45 @@ module.exports = {
 		splitChunks: {
 			minSize: 30000,
 			maxSize: 240000,
-			chunks: 'all',
       cacheGroups: {
+				rcPicker: {
+          test: /[\\/]node_modules[\\/]rc-picker[\\/]/,
+					priority: 5,
+					name: 'rc-picker',
+					minChunks: 2,
+        },
+				rcTree: {
+          test: /[\\/]node_modules[\\/]rc-tree[\\/]/,
+					priority: 8,
+					name: 'rc-tree',
+					minChunks: 2,
+        },
 				antIcon: {
           test: /[\\/]node_modules[\\/]@ant-design[\\/]/,
-					priority: 40,
+					priority: 10,
 					name: 'ant-icon',
+					minChunks: 2,
         },
-				rcTreeAndTable: {
-          test: /[\\/]node_modules[\\/](rc-table|rc-tree|rc-select)[\\/]/,
-					priority: 43,
-					name: 'rc-tree-and-table',
+				
+				rcTable: {
+          test: /[\\/]node_modules[\\/]rc-table[\\/]/,
+					priority: 15,
+					name: 'rc-table',
+					minChunks: 2,
         },
-				rcTriggerList: {
-          test: /[\\/]node_modules[\\/](rc-align|rc-tree-select|rc-cascader|rc-menu|rc-field-form)[\\/]es/,
-					priority: 41,
-					name: 'rc-trigger-list',
-        },
-				rcUtils: {
-          test: /[\\/]node_modules[\\/](rc-util|rc-notification|rc-trigger|rc-pagination|rc-virtual-list)[\\/]/,
-					priority: 42,
-					name: 'rc-util',
-        },
-				antdLib: {
-          test: /[\\/]node_modules[\\/]antd[\\/]lib/,
-					priority: 48,
-					name: 'antdLib',
+				antLib: {
+          test: /[\\/]node_modules[\\/]antd[\\/]lib[\\/]/,
+					priority: 18,
+					name: 'ant-lib',
+					minChunks: 2,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
 					priority: 2,
 					name: 'vendor',
+					chunks: 'all',
+					minChunks: 2,
         },
-				initialChunks: {
-					priority: 0,
-					name: 'initialChunks',
-					chunks: 'initial',
-				},
 				default: {
 					minChunks: 2,
           priority: -10,
